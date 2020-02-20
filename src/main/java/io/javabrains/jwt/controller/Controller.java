@@ -12,7 +12,7 @@ public class Controller {
     @Autowired
     private DemonRepo repo;
 
-    @GetMapping("/hello")
+    @GetMapping({"/hello"})
     public String hello()
     {
         System.out.println(repo.count());
