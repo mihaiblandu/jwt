@@ -2,11 +2,9 @@ package io.javabrains.jwt.controller;
 
 import io.javabrains.jwt.model.AuthenticationResponse;
 import io.javabrains.jwt.model.AutheticationRequest;
-import io.javabrains.jwt.repo.DemonRepo;
 import io.javabrains.jwt.service.MyUserDetailsService;
 import io.javabrains.jwt.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class Controller {
 
 
-    @Autowired
-    private DemonRepo repo;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -38,7 +34,6 @@ public class Controller {
     @GetMapping({"/hello"})
     public String hello()
     {
-        System.out.println(repo.count());
         return "Hello";
     }
     @PostMapping({"/authenticate"})
@@ -59,6 +54,7 @@ public class Controller {
             );
         }
         catch (BadCredentialsException e) {
+
             throw new Exception("Incorrect username or password", e);
         }
 

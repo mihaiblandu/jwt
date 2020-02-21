@@ -1,5 +1,6 @@
 package io.javabrains.jwt.service;
 
+import io.javabrains.jwt.ErrorsHandlers.UserNotFoundException;
 import io.javabrains.jwt.model.User;
 import io.javabrains.jwt.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 
         if (user == null) {
-            throw new UsernameNotFoundException(username);
+            throw new UserNotFoundException(username);
         }
         return new MyUserPrincipal(user);
     }
