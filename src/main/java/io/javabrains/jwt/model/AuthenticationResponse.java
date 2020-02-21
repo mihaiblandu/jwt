@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 public class AuthenticationResponse {
-    private  final String jwr;
+    private  final String jwt;
 }

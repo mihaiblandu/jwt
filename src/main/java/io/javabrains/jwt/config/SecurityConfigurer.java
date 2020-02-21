@@ -33,7 +33,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
-
    /*
    *  Creating a bean of auth manager
    * */
