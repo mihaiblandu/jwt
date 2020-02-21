@@ -28,6 +28,10 @@ public class Controller {
     @Autowired
     private JwtUtil jwtTokenUtil;
 
+    /*
+      user details service
+     */
+
     @Autowired
     private MyUserDetailsService userDetailsService;
 
@@ -39,7 +43,17 @@ public class Controller {
     }
     @PostMapping({"/authenticate"})
     public ResponseEntity<?> authenticate(@RequestBody AutheticationRequest authenticationRequest) throws Exception{
+
+            /*
+                Authentificate user
+            */
+
         try {
+
+            /*
+               Autentification by auth manager provided by spring
+            */
+
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
